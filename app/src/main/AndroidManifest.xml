@@ -25,8 +25,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FromPhotoActivity" />
-        <activity android:name=".LiveCaptureActivity"></activity>
+        <activity android:name=".OCR.LiveDetectionsActivity"></activity>
     </application>
 
 </manifest>
