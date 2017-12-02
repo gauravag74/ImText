@@ -20,9 +20,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.SparseArray;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         checkPermission();
+        removeFocusFromEditText();
+    }
+
+    private void removeFocusFromEditText() {
+        try {
+            this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        } catch (Exception e) {
+        }
     }
 
     private void checkPermission() {
@@ -94,22 +101,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     public void startLive(View view) {
         startActivityForResult(new Intent(MainActivity.this, LiveDetectionsActivity.class), RC_LIVE_CAPTURE);
     }
@@ -133,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
                     if (text.trim().equals("")) {
                         Toast.makeText(this, "No text detected", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(this, "Text Detected", Toast.LENGTH_SHORT).show();
                         copyTextToClipboard(text);
                         Toast.makeText(this, "Text copied to clipboard", Toast.LENGTH_SHORT).show();
                         saveTextToFile(text);
@@ -144,7 +134,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         } else if (requestCode == RC_LIVE_CAPTURE) {
-            String statusMessage = "";
             if (resultCode == CommonStatusCodes.SUCCESS) {
                 if (data != null) {
                     String text = data.getStringExtra(LiveDetectionsActivity.TextBlockObject);
@@ -154,13 +143,11 @@ public class MainActivity extends AppCompatActivity {
                     saveTextToFile(text);
                     Log.d(TAG, "Text read: " + text);
                 } else {
-                    statusMessage = "No Text Captured";
                     Log.d(TAG, "No Text captured, intent data is null");
                 }
             } else {
-                statusMessage = "Failed";
+                Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
             }
-            Toast.makeText(this, statusMessage, Toast.LENGTH_SHORT).show();
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }

@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -11,8 +12,8 @@
     <EditText
         android:id="@+id/text_value"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:hint="Click Camera or Gallery to detect text."
+        android:layout_height="300dp"
+        android:hint="Live Capture is Cool but you can also pick from gallery."
         android:scrollbars="vertical"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceLarge"

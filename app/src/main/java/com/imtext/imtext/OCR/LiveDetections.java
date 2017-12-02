@@ -48,7 +48,7 @@ public class LiveDetections extends BoundingBoxes.Graphic {
         if (sTextPaint == null) {
             sTextPaint = new Paint();
             sTextPaint.setColor(TEXT_COLOR);
-            sTextPaint.setTextSize(54.0f);
+            sTextPaint.setTextSize(38.0f);
         }
         postInvalidate();
     }
