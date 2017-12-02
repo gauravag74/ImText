@@ -4,6 +4,7 @@ Future of Keyboard
 # Frustated by typing or giving input. ImText is here. How?
 1. Capturing live text going around in the world to digital text form making it processable by machines.
 2. It is the fastest way of conversion from paper to text.
+3. App size > 3MB.
 
 # Applications
 1. Checking product labels while shopping.
@@ -11,7 +12,7 @@ Future of Keyboard
 3. Making digital notes.
 4. Scanning ID cards.
 
-#Demo
+# Demo
 
 # Outcomes
-It will help in achieving the vision of Digital India, where every Indian is digitally empowered and every information is digitally available./
+It will help in achieving the vision of Digital India, where every Indian is digitally empowered and every information is digitally available.
